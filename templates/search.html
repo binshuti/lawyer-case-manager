@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Cases</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔍 Search Cases</h1>
+    <a href="/">← Back to All Cases</a>
+    <form method="get">
+        <input type="text" name="q" value="{{ keyword }}" placeholder="Search keyword...">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if keyword %}
+        <h2>Results for "{{ keyword }}":</h2>
+        <ul>
+            {% for r in results %}
+            <li>{{ r[1] }}<br>{{ r[2] }}<br>Status: {{ r[3] }}</li>
+            {% endfor %}
+        </ul>
+        {% if not results %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

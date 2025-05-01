@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Case</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>➕ Add New Case</h1>
+    <a href="/">← Back to All Cases</a>
+    <form method="post">
+        <label>Client:</label>
+        <select name="client_id">
+            {% for client in clients %}
+            <option value="{{ client[0] }}">{{ client[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Court:</label>
+        <select name="court_id">
+            {% for court in courts %}
+            <option value="{{ court[0] }}">{{ court[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Case Type:</label>
+        <input type="text" name="case_type">
+
+        <label>Description:</label>
+        <textarea name="description"></textarea>
+
+        <label>Status:</label>
+        <input type="text" name="status">
+
+        <label>Opened Date:</label>
+        <input type="date" name="opened_date">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

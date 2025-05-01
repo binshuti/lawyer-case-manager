@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lawyer Case Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📂 All Cases</h1>
+    <a href="/add">➕ Add New Case</a> | <a href="/search">🔍 Search Cases</a>
+    <ul>
+        {% for case in cases %}
+        <li><strong>{{ case[1] }}</strong><br>
+            Type: {{ case[3] }}<br>
+            Court: {{ case[2] }}<br>
+            Status: {{ case[4] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
