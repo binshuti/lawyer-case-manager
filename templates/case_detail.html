@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Case #{{ case[0] }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📋 Case #{{ case[0] }} Details</h1>
+    <a href="/">← Back to All Cases</a>
+
+    <p><strong>Client:</strong> {{ case[1] }}</p>
+    <p><strong>Court:</strong> {{ case[2] }}</p>
+    <p><strong>Type:</strong> {{ case[3] }}</p>
+    <p><strong>Status:</strong> {{ case[5] }}</p>
+    <p><strong>Opened:</strong> {{ case[6] }}</p>
+    <p><strong>Description:</strong><br>{{ case[4] }}</p>
+
+    <h2>📌 Status Updates</h2>
+    {% if updates %}
+        <ul>
+        {% for update in updates %}
+            <li>{{ update[0] }} – {{ update[1] }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No updates yet.</p>
+    {% endif %}
+</body>
+</html>

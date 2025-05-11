@@ -7,32 +7,44 @@
 <body>
     <h1>➕ Add New Case</h1>
     <a href="/">← Back to All Cases</a>
+
+    <!-- Flash success messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
     <form method="post">
         <label>Client:</label>
-        <select name="client_id">
+        <select name="client_id" required>
             {% for client in clients %}
             <option value="{{ client[0] }}">{{ client[1] }}</option>
             {% endfor %}
         </select>
 
         <label>Court:</label>
-        <select name="court_id">
+        <select name="court_id" required>
             {% for court in courts %}
             <option value="{{ court[0] }}">{{ court[1] }}</option>
             {% endfor %}
         </select>
 
         <label>Case Type:</label>
-        <input type="text" name="case_type">
+        <input type="text" name="case_type" required>
 
         <label>Description:</label>
-        <textarea name="description"></textarea>
+        <textarea name="description" required></textarea>
 
         <label>Status:</label>
-        <input type="text" name="status">
+        <input type="text" name="status" required>
 
         <label>Opened Date:</label>
-        <input type="date" name="opened_date">
+        <input type="date" name="opened_date" required>
 
         <button type="submit">Submit</button>
     </form>

@@ -6,13 +6,32 @@
 </head>
 <body>
     <h1>📂 All Cases</h1>
-    <a href="/add">➕ Add New Case</a> | <a href="/search">🔍 Search Cases</a>
+
+    <!-- Flash success messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Navigation links -->
+    <a href="/add">➕ Add New Case</a> | 
+    <a href="/add-client">👤 Add New Client</a> | 
+    <a href="/search">🔍 Search Cases</a>
+
+    <!-- List of cases -->
     <ul>
         {% for case in cases %}
-        <li><strong>{{ case[1] }}</strong><br>
+        <li>
+            <strong><a href="/case/{{ case[0] }}">{{ case[1] }}</a></strong><br>
             Type: {{ case[3] }}<br>
             Court: {{ case[2] }}<br>
-            Status: {{ case[4] }}</li>
+            Status: {{ case[4] }}
+        </li>
         {% endfor %}
     </ul>
 </body>

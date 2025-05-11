@@ -30,3 +30,14 @@ CREATE TABLE StatusUpdates (
     status_detail TEXT,
     FOREIGN KEY (case_id) REFERENCES Cases(case_id)
 );
+
+-- ✅ INDEXES FOR OPTIMIZATION
+
+-- Speeds up searching for similar cases
+CREATE INDEX idx_case_type ON Cases(case_type);
+CREATE INDEX idx_case_description ON Cases(description);
+
+-- Speeds up joins on foreign keys
+CREATE INDEX idx_cases_client_id ON Cases(client_id);
+CREATE INDEX idx_cases_court_id ON Cases(court_id);
+CREATE INDEX idx_updates_case_id ON StatusUpdates(case_id);
