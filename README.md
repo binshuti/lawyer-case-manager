@@ -55,7 +55,7 @@ lawyer_case_manager/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/binshuti/lawyer-case-manager.git
+git clone https://github.com/binshuti/lawyer-case-manager
 cd lawyer-case-manager
 ```
 
